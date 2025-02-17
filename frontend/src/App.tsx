@@ -1,10 +1,11 @@
 import React from "react";
-import ApplicationCanvas from "./components/ApplicationCanvas";
+import CanvasSetup from "./components/CanvasSetup";
+import ApplicationSetup from "./components/ApplicationSetup";
 
 const App = () => {
     return (
         <div>
-            <ApplicationCanvas />
+            <CanvasSetup children={<ApplicationSetup />} />
         </div>
     );
 };
