@@ -1,18 +1,20 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
 type initGlobalVars = {
-    token: string | null
+    tool: "GRAB" | "ITEMS"
 };
 
 const initialState: initGlobalVars = {
-    token: null,
+    tool: "GRAB"
 };
 
 export const Slice = createSlice({
     name: "GlobalVars",
     initialState,
     reducers: {
-
+        setTool: (state, { payload }: PayloadAction<initGlobalVars["tool"]>) => {
+            state.tool = payload
+        }
     },
 });
 

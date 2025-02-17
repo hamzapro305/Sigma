@@ -30,7 +30,7 @@ const ApplicationSetup = () => {
             />
 
             {/* OrbitControls for Figma-like panning and zooming */}
-            <OrbitControls
+            {/* <OrbitControls
                 enableZoom={true} // Allow zooming
                 enablePan={true} // Allow panning
                 enableRotate={false} // Disable rotation
@@ -43,7 +43,7 @@ const ApplicationSetup = () => {
                     MIDDLE: 1, // Middle-click for zooming
                     RIGHT: 0, // Disable right-click
                 }}
-            />
+            /> */}
         </group>
     );
 };
