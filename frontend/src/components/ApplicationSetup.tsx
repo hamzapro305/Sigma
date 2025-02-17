@@ -1,5 +1,4 @@
 import { OrbitControls, OrthographicCamera } from "@react-three/drei";
-import React from "react";
 
 const ApplicationSetup = () => {
     return (
@@ -24,23 +23,25 @@ const ApplicationSetup = () => {
             {/* Orthographic Camera to make it 2D */}
             <OrthographicCamera
                 makeDefault
-                position={[0, 0, 5]}
-                zoom={50}
+                position={[0, 0, 5]} // Adjust the Z position to frame the scene properly
+                zoom={50} // Adjust the zoom level
                 near={0.1}
                 far={1000}
             />
 
-            {/* OrbitControls for panning and zooming (no rotation) */}
+            {/* OrbitControls for Figma-like panning and zooming */}
             <OrbitControls
-                enableZoom={true}
-                enablePan={true}
-                enableRotate={false} // Disable rotation (Figma-style)
-                maxDistance={10}
-                minDistance={2}
+                enableZoom={true} // Allow zooming
+                enablePan={true} // Allow panning
+                enableRotate={false} // Disable rotation
+                zoomSpeed={0.5} // Adjust zoom speed for smoother experience
+                panSpeed={1} // Adjust pan speed for smoother experience
+                maxDistance={10} // Maximum zoom-out distance
+                minDistance={2} // Minimum zoom-in distance
                 mouseButtons={{
-                    LEFT: 2, // Left-click for dragging
+                    LEFT: 2, // Left-click for panning (drag)
                     MIDDLE: 1, // Middle-click for zooming
-                    RIGHT: 0, // Right-click disabled
+                    RIGHT: 0, // Disable right-click
                 }}
             />
         </group>
