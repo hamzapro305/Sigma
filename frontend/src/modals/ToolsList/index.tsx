@@ -46,24 +46,26 @@ const ToolsList = () => {
                     height: isOpen ? "30px" : "0px",
                 }}
             >
-                <AnimatePresence mode="wait">
+                <AnimatePresence mode="wait" presenceAffectsLayout>
                     {isOpen ? (
-                        Icons.map((icon, index) => (
-                            <motion.div
-                                key={icon.Name}
-                                className={`icon action-icon ${
-                                    Tool === icon.Name ? "opened" : ""
-                                }`}
-                                onClick={() => setTool(icon.Name)}
-                                variants={IconAnimation}
-                                initial="hidden"
-                                animate="animate"
-                                exit="exit"
-                                custom={index}
-                            >
-                                <icon.icon />
-                            </motion.div>
-                        ))
+                        <div className="action-icons">
+                            {Icons.map((icon, index) => (
+                                <motion.div
+                                    key={icon.Name}
+                                    className={`icon action-icon ${
+                                        Tool === icon.Name ? "opened" : ""
+                                    }`}
+                                    onClick={() => setTool(icon.Name)}
+                                    variants={IconAnimation}
+                                    initial="hidden"
+                                    animate="animate"
+                                    exit="exit"
+                                    custom={index}
+                                >
+                                    <icon.icon />
+                                </motion.div>
+                            ))}
+                        </div>
                     ) : (
                         <motion.div
                             className="icon"
@@ -81,8 +83,6 @@ const ToolsList = () => {
     );
 };
 
-// make this as first un open item get fade out then other fade in
-// Fade-out first icon, then fade-in others
 const IconAnimation: Variants = {
     hidden: { opacity: 0, y: -10 },
     animate: (index: number) => ({

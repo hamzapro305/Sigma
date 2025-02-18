@@ -18,12 +18,12 @@
         gap: 10px;
         align-items: center;
         height: 100%;
-        .icon {
+        .action-icons {
             display: flex;
-            font-size: 30px;
-            color: white;
-            padding: 10px;
-            &.action-icon {
+            justify-content: center;
+            gap: 10px;
+            align-items: center;
+            .action-icon {
                 font-size: 25px;
                 padding: 10px;
                 border-radius: 0.3rem;
@@ -34,6 +34,12 @@
                     background-color: #d6cfcf4e;
                 }
             }
+        }
+        .icon {
+            display: flex;
+            font-size: 30px;
+            color: white;
+            padding: 10px;
         }
     }
 }
