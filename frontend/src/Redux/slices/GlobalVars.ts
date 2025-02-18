@@ -1,10 +1,10 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
-type initGlobalVars = {
+export type initGlobalVarsT = {
     tool: "GRAB" | "ITEMS"
 };
 
-const initialState: initGlobalVars = {
+const initialState: initGlobalVarsT = {
     tool: "GRAB"
 };
 
@@ -12,7 +12,7 @@ export const Slice = createSlice({
     name: "GlobalVars",
     initialState,
     reducers: {
-        setTool: (state, { payload }: PayloadAction<initGlobalVars["tool"]>) => {
+        setTool: (state, { payload }: PayloadAction<initGlobalVarsT["tool"]>) => {
             state.tool = payload
         }
     },
