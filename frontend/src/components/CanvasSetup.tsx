@@ -12,10 +12,6 @@ const CanvasSetup: FC<{ children: ReactNode }> = ({ children }) => {
                 left: 0,
                 zIndex: -2,
             }}
-            camera={{
-                position: [0, 0, 5],
-                fov: 50,
-            }}
         >
             <color attach="background" args={["white"]} />
             {children}

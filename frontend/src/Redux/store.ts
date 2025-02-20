@@ -1,10 +1,12 @@
 import { configureStore } from "@reduxjs/toolkit";
 import GlobalVars from "./slices/GlobalVars";
+import CursorSlice from "./slices/CursorSlice";
 
 export const makeStore = () => {
     return configureStore({
         reducer: {
-            GlobalVars: GlobalVars
+            GlobalVars: GlobalVars,
+            CursorSlice: CursorSlice
         },
         middleware: (getDefaultMiddleware) =>
             getDefaultMiddleware({

@@ -1,6 +1,9 @@
+import useMultipleCursorProvider from "@/Providers/useMultipleCursorProvider";
 import { OrbitControls, OrthographicCamera } from "@react-three/drei";
+import AllUserCursors from "./AllUserCursors";
 
 const ApplicationSetup = () => {
+    useMultipleCursorProvider()
     return (
         <group>
             {/* Ambient Light */}
@@ -24,13 +27,13 @@ const ApplicationSetup = () => {
             <OrthographicCamera
                 makeDefault
                 position={[0, 0, 5]} // Adjust the Z position to frame the scene properly
-                zoom={50} // Adjust the zoom level
+                zoom={100} // Adjust the zoom level
                 near={0.1}
                 far={1000}
             />
 
             {/* OrbitControls for Figma-like panning and zooming */}
-            {/* <OrbitControls
+            <OrbitControls
                 enableZoom={true} // Allow zooming
                 enablePan={true} // Allow panning
                 enableRotate={false} // Disable rotation
@@ -43,7 +46,8 @@ const ApplicationSetup = () => {
                     MIDDLE: 1, // Middle-click for zooming
                     RIGHT: 0, // Disable right-click
                 }}
-            /> */}
+            />
+            <AllUserCursors />
         </group>
     );
 };
