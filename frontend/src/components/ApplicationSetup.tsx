@@ -1,9 +1,7 @@
-import useMultipleCursorProvider from "@/Providers/useMultipleCursorProvider";
 import { OrbitControls, OrthographicCamera } from "@react-three/drei";
 import AllUserCursors from "./AllUserCursors";
 
 const ApplicationSetup = () => {
-    useMultipleCursorProvider()
     return (
         <group>
             {/* Ambient Light */}

@@ -1,3 +1,4 @@
+import MultipleCursorProvider from "@/Providers/MultipleCursorProvider";
 import { Canvas } from "@react-three/fiber";
 import { FC, ReactNode } from "react";
 
@@ -14,7 +15,10 @@ const CanvasSetup: FC<{ children: ReactNode }> = ({ children }) => {
             }}
         >
             <color attach="background" args={["white"]} />
+            <MultipleCursorProvider>
+
             {children}
+            </MultipleCursorProvider>
         </Canvas>
     );
 };
