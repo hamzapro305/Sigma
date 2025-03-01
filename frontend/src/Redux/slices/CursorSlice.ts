@@ -1,12 +1,12 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
-type User = {
+export type UserCursor = {
     name: string
     x: number
     y: number
 }
 type SliceT = {
-    users: User[]
+    users: UserCursor[]
 }
 
 const initialState: SliceT = {
@@ -17,7 +17,7 @@ export const Slice = createSlice({
     name: "CursorSlice",
     initialState,
     reducers: {
-        SyncUsers: (state, { payload }: PayloadAction<User[]>) => {
+        SyncUsers: (state, { payload }: PayloadAction<UserCursor[]>) => {
             state.users = payload
         },
         UserJoin: (state, { payload }: PayloadAction<string>) => {
@@ -34,7 +34,7 @@ export const Slice = createSlice({
                 }
             }
         },
-        UserNewPos: (state, { payload }: PayloadAction<User>) => {
+        UserNewPos: (state, { payload }: PayloadAction<UserCursor>) => {
             for (let i = 0; i < state.users.length; i++) {
                 const user = state.users[i]
                 if (user.name == payload.name) {
