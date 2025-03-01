@@ -1,5 +1,5 @@
 import { useAppSelector } from "@/Redux/Hooks";
-import { UserCursor } from "@/Redux/slices/CursorSlice";
+import { UserCursor } from "@/Redux/slices/DrawingSlice";
 import { useSpring, animated } from "@react-spring/three";
 import { Text } from "@react-three/drei";
 import { useLoader } from "@react-three/fiber";
@@ -7,7 +7,7 @@ import { FC } from "react";
 import * as THREE from "three";
 
 const AllUserCursors = () => {
-    const users = useAppSelector((s) => s.CursorSlice.users);
+    const users = useAppSelector((s) => s.DrawingSlice.users);
 
     return (
         <group>

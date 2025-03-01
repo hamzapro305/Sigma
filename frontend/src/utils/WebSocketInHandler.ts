@@ -1,4 +1,4 @@
-import { CursorActions } from "@/Redux/slices/CursorSlice";
+import { DrawingActions } from "@/Redux/slices/DrawingSlice";
 import { AppDispatch } from "@/Redux/store";
 import { WebSocketMessage } from "@/types/SocketCursorTypes"
 
@@ -10,26 +10,26 @@ class WebSocketInHandler {
         switch (message.type) {
             case "sync_users":
                 dispatch(
-                    CursorActions.SyncUsers(message.all_users ?? [])
+                    DrawingActions.SyncUsers(message.all_users ?? [])
                 )
                 break;
             case "user_join":
                 dispatch(
-                    CursorActions.UserJoin(
+                    DrawingActions.UserJoin(
                         message.name
                     )
                 )
                 break;
             case "user_left":
                 dispatch(
-                    CursorActions.UserLeft(
+                    DrawingActions.UserLeft(
                         message.name
                     )
                 )
                 break;
             case "user_new_pos":
                 dispatch(
-                    CursorActions.UserNewPos(message)
+                    DrawingActions.UserNewPos(message)
                 )
                 break;
             default:

@@ -1,12 +1,14 @@
 import { OrbitControls, OrthographicCamera } from "@react-three/drei";
 import AllUserCursors from "./AllUserCursors";
+import DraggableBox from "./DraggableBox";
+import { useAppSelector } from "@/Redux/Hooks";
 
 const ApplicationSetup = () => {
+    const { isSelected } = useAppSelector((s) => s.DrawingSlice);
     return (
         <group>
             {/* Ambient Light */}
             <ambientLight intensity={0.5} />
-
             {/* 2D Boxes */}
             <mesh position={[-2, 0, 0]}>
                 <boxGeometry args={[1, 1, 0.1]} />
@@ -20,6 +22,7 @@ const ApplicationSetup = () => {
                 <boxGeometry args={[1, 1, 0.1]} />
                 <meshStandardMaterial color="blue" />
             </mesh>
+            <DraggableBox id="123" />
 
             {/* Orthographic Camera to make it 2D */}
             <OrthographicCamera
@@ -31,20 +34,22 @@ const ApplicationSetup = () => {
             />
 
             {/* OrbitControls for Figma-like panning and zooming */}
-            <OrbitControls
-                enableZoom={true} // Allow zooming
-                enablePan={true} // Allow panning
-                enableRotate={false} // Disable rotation
-                zoomSpeed={0.5} // Adjust zoom speed for smoother experience
-                panSpeed={1} // Adjust pan speed for smoother experience
-                maxDistance={10} // Maximum zoom-out distance
-                minDistance={2} // Minimum zoom-in distance
-                mouseButtons={{
-                    LEFT: 2, // Left-click for panning (drag)
-                    MIDDLE: 1, // Middle-click for zooming
-                    RIGHT: 0, // Disable right-click
-                }}
-            />
+            {!isSelected && (
+                <OrbitControls
+                    enableZoom={true} // Allow zooming
+                    enablePan={true} // Allow panning
+                    enableRotate={false} // Disable rotation
+                    zoomSpeed={0.5} // Adjust zoom speed for smoother experience
+                    panSpeed={1} // Adjust pan speed for smoother experience
+                    maxDistance={10} // Maximum zoom-out distance
+                    minDistance={2} // Minimum zoom-in distance
+                    mouseButtons={{
+                        LEFT: 2, // Left-click for panning (drag)
+                        MIDDLE: 1, // Middle-click for zooming
+                        RIGHT: 0, // Disable right-click
+                    }}
+                />
+            )}
             <AllUserCursors />
         </group>
     );

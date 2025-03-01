@@ -7,14 +7,16 @@ export type UserCursor = {
 }
 type SliceT = {
     users: UserCursor[]
+    isSelected: string | null
 }
 
 const initialState: SliceT = {
-    users: []
+    users: [],
+    isSelected: null
 };
 
 export const Slice = createSlice({
-    name: "CursorSlice",
+    name: "DrawingSlice",
     initialState,
     reducers: {
         SyncUsers: (state, { payload }: PayloadAction<UserCursor[]>) => {
@@ -43,10 +45,13 @@ export const Slice = createSlice({
                 }
             }
         },
+        setSelectedItem: (state, { payload }: PayloadAction<string | null>) => {
+            state.isSelected = payload
+        }
     },
 });
 
 // Action creators are generated for each case reducer function
-export const CursorActions = Slice.actions;
+export const DrawingActions = Slice.actions;
 
 export default Slice.reducer;
