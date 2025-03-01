@@ -1,17 +1,14 @@
+import { DrawingItem, UserCursor } from "@/Redux/slices/DrawingSlice"
+
 type WebSocketNewPosMessage = {
     type: "user_new_pos"
     name: string
-    x: number
-    y: number
+    position: UserCursor["position"]
 }
 
 type WebSocketSyncUsersMessage = {
     type: "sync_users"
-    all_users: {
-        name: string
-        x: number
-        y: number
-    }[]
+    all_users: UserCursor[]
 }
 
 type WebSocketUserLeftMessage = {
@@ -23,11 +20,17 @@ type WebSocketUserJoinMessage = {
     name: string
 }
 
+type WebSocketNewDrawingMessage = {
+    type: "new_drawing",
+    drawing: DrawingItem
+}
+
 type WebSocketMessage =
     | WebSocketNewPosMessage
     | WebSocketSyncUsersMessage
     | WebSocketUserLeftMessage
     | WebSocketUserJoinMessage
+    | WebSocketNewDrawingMessage
 
 export type {
     WebSocketMessage

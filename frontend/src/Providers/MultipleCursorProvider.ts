@@ -26,8 +26,7 @@ const MultipleCursorProvider: MultipleCursorProviderT = ({ children }) => {
             const body = JSON.stringify({
                 type: "user_new_pos",
                 name: name,
-                x,
-                y,
+                position: { x, y }
             });
             ws.send(body);
         }

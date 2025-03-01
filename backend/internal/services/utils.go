@@ -1,11 +1,15 @@
 package services
 
-import "encoding/json"
+import (
+	"encoding/json"
 
-func ParseWebsocketMessage[T any](message []byte) (*T, map[string]interface{}) {
+	"github.com/gofiber/fiber/v2"
+)
+
+func ParseWebsocketMessage[T any](message []byte) (*T, fiber.Map) {
 	var body T
 	if err := json.Unmarshal(message, &body); err != nil {
-		return nil, map[string]interface{}{
+		return nil, fiber.Map{
 			"type":    "error",
 			"message": "invalid message format",
 		}

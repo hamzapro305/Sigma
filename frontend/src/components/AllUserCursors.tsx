@@ -26,7 +26,7 @@ const UserCursorComponent: FC<UserCursorComponentT> = ({ user }) => {
     const cursorTexture = useLoader(THREE.TextureLoader, "/cursor.png");
 
     const { position } = useSpring({
-        position: [user.x, user.y, 1],
+        position: [user.position.x, user.position.y, 1],
         config: { mass: 0.2, tension: 120, friction: 14 },
     });
 

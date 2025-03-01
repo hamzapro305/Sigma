@@ -5,10 +5,10 @@ import { VscGrabber } from "react-icons/vsc";
 import { useAppDispatch, useAppSelector } from "@/Redux/Hooks";
 import { AnimatePresence, motion, Variants } from "motion/react";
 import "./index.scss";
-import { GlobalVarsActions, initGlobalVarsT } from "@/Redux/slices/GlobalVars";
 import { IconType } from "react-icons";
+import { DrawingActions, DrawingSliceT } from "@/Redux/slices/DrawingSlice";
 
-type ToolType = initGlobalVarsT["tool"];
+type ToolType = DrawingSliceT["tool"];
 
 const Icons: { Name: ToolType; icon: IconType }[] = [
     {
@@ -25,10 +25,10 @@ const width = 45 * IconsSize + 10 * (IconsSize - 1);
 
 const ToolsList = () => {
     const [isOpen, setIsOpen] = useState(true);
-    const Tool = useAppSelector((s) => s.GlobalVars.tool);
+    const Tool = useAppSelector((s) => s.DrawingSlice.tool);
     const dispatch = useAppDispatch();
     const setTool = (_Tool: ToolType) => {
-        dispatch(GlobalVarsActions.setTool(_Tool));
+        dispatch(DrawingActions.setTool(_Tool));
     };
     return (
         <motion.div

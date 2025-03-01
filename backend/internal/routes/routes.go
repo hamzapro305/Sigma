@@ -17,11 +17,10 @@ func webSocketRoute(webRoute fiber.Router) {
 
 		// Add User Connection
 		services.AddConnection(name, services.UserConnection{
-			Name: name,
-			Conn: c,
-			X:    0,
-			Y:    0.0,
-			Mu:   &sync.Mutex{},
+			Name:     name,
+			Conn:     c,
+			Position: services.PositionT{},
+			Mu:       &sync.Mutex{},
 		})
 		log.Println("User connected:", name)
 

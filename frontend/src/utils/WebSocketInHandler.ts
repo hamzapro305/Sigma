@@ -29,7 +29,15 @@ class WebSocketInHandler {
                 break;
             case "user_new_pos":
                 dispatch(
-                    DrawingActions.UserNewPos(message)
+                    DrawingActions.UserNewPos({
+                        name: message.name,
+                        position: message.position
+                    })
+                )
+                break;
+            case "new_drawing":
+                dispatch(
+                    DrawingActions.NewDrawing(message.drawing)
                 )
                 break;
             default:
